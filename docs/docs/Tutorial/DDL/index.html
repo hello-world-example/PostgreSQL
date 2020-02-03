@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D D L | PostgreSQL</title>
+
+
+<link rel="stylesheet" href="/PostgreSQL/book.min.79de1f7861b0c98f453c0a93bebf3608a280809e417787746c373699639900d7.css">
+
+
+
+
+<link rel="icon" href="/PostgreSQL/favicon.png" type="image/x-icon">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" style="display: none" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://hello-world-example.github.io/PostgreSQL/">PostgreSQL</a>
+</h2>
+
+
+
+
+
+
+    
+  
+  
+  
+
+  <style>
+  nav ul a[href$="\2fPostgreSQL\2f docs\2fTutorial\2f DDL\2f "] {
+      color: #004ed0;
+  }
+  </style>
+
+<ul>
+<li><strong>Basic</strong>
+
+<ul>
+<li><a href="/PostgreSQL/docs/Basic/Install-In-MAC/">MAC 下安装 Postgres</a></li>
+<li><a href="/PostgreSQL/docs/Basic/MySQL.vs.PostgreSQL/">MySQL vs PostgreSQL</a></li>
+<li><a href="/PostgreSQL/docs/Basic/JDBC/">JDBC</a></li>
+</ul></li>
+<li><strong>Tutorial</strong>
+
+<ul>
+<li><a href="/PostgreSQL/docs/Tutorial/DDL/">DDL 数据定义</a></li>
+<li><a href="/PostgreSQL/docs/Tutorial/DataType/">数据类型</a></li>
+<li><a href="/PostgreSQL/docs/Tutorial/Catalogs/">系统表</a></li>
+<li><a href="/PostgreSQL/docs/Tutorial/Params/">常见参数</a></li>
+</ul></li>
+<li><strong>Action</strong>
+
+<ul>
+<li><a href="/PostgreSQL/docs/Action/Sequence/">自增主键</a></li>
+<li>_MODIFY_TIME 自动更新</li>
+</ul></li>
+<li><strong>Tools</strong>
+
+<ul>
+<li><a href="/PostgreSQL/docs/Tools/rds_dbsync/">rds_dbsync</a></li>
+</ul></li>
+</ul>
+
+
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+    </aside>
+
+    <div class="book-page">
+      <header class="flex align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/PostgreSQL/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>D D L</strong>
+</header>
+
+      
+<article class="markdown">
+
+<h1 id="ddl-数据定义">DDL 数据定义</h1>
+
+<h2 id="表基础">表基础</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> products (
+    product_no integer,
+    name text,
+    price numeric
+);</code></pre></div>
+<blockquote>
+<p>SQL 命令 <a href="http://www.postgres.cn/docs/10/sql-createtable.html">CREATE TABLE</a></p>
+</blockquote>
+
+<h2 id="默认值">默认值</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> products (
+    product_no integer <span style="color:#66d9ef">DEFAULT</span> nextval(<span style="color:#e6db74">&#39;products_product_no_seq&#39;</span>),
+    name text,
+    price numeric <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">9</span>.<span style="color:#ae81ff">99</span>,
+    create_time <span style="color:#66d9ef">timestamp</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>
+);</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> products (
+    product_no SERIAL,
+    ...
+);</code></pre></div>
+<h2 id="约束">约束</h2>
+
+<h3 id="check">CHECK</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> products (
+    product_no integer,
+    name text,
+    price numeric <span style="color:#66d9ef">CHECK</span> (price <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+);</code></pre></div>
+<p>给与约束一个独立的名称</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> products (
+    product_no integer,
+    name text,
+    price numeric <span style="color:#66d9ef">CONSTRAINT</span> positive_price <span style="color:#66d9ef">CHECK</span> (price <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+);</code></pre></div>
+<p>一个检查约束也可以引用多个列</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> products (
+    product_no integer,
+    name text,
+    price numeric <span style="color:#66d9ef">CHECK</span> (price <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>),
+    discounted_price numeric,
+    <span style="color:#66d9ef">CHECK</span> (discounted_price <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">AND</span> price <span style="color:#f92672">&gt;</span> discounted_price)
+);</code></pre></div>
+<blockquote>
+<p>前两个约束称为列约束，而第三个约束为表约束，因为它独立于任何一个列定义</p>
+</blockquote>
+
+<h3 id="非空约束">非空约束</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> products (
+    product_no integer <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+    name text <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+    price numeric
+);</code></pre></div>
+<h3 id="唯一约束">唯一约束</h3>
+
+<p>列约束</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> products (
+    product_no integer [<span style="color:#66d9ef">CONSTRAINT</span> must_be_different] <span style="color:#66d9ef">UNIQUE</span>,
+    name text,
+    price numeric
+);</code></pre></div>
+<p>表约束</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> products (
+    product_no integer,
+    name text,
+    price numeric,
+    <span style="color:#66d9ef">UNIQUE</span> (product_no)
+);</code></pre></div>
+<p>多列约束</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> example (
+    a integer,
+    b integer,
+    <span style="color:#66d9ef">c</span> integer,
+    <span style="color:#66d9ef">UNIQUE</span> (a, <span style="color:#66d9ef">c</span>)
+);</code></pre></div>
+<h3 id="主键">主键</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> products (
+    product_no integer <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+    name text,
+    price numeric
+);</code></pre></div>
+<p>或</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> example (
+    a integer,
+    b integer,
+    <span style="color:#66d9ef">c</span> integer,
+    <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (a, <span style="color:#66d9ef">c</span>)
+);</code></pre></div>
+<blockquote>
+<p>增加一个主键将自动在主键中列出的 列或列组 上创建一个唯一 <code>B-tree</code> 索引。并且会强制这些列被标记为<code>NOT NULL</code>。</p>
+
+<p>一个表最多只能有一个主键。关系数据库理论要求每一个表都要有一个主键。但PostgreSQL中并未强制要求这一点，但是最好能够遵循它。</p>
+
+<p>主键对于文档和客户端应用都是有用的。例如，一个允许修改行值的 GUI 应用可能需要知道一个表的主键，以便能唯一地标识行。如果定义了主键，数据库系统也有多种方法来利用主键。例如，主键定义了外键要引用的默认目标列。</p>
+</blockquote>
+
+<h2 id="系统列">系统列</h2>
+
+<blockquote>
+<p>每一个表都拥有一些由系统隐式定义的*系统列*。因此，这些列的名字不能像用户定义的列一起使用。 事实上用户不需要关心这些列，只需要知道它们存在即可。</p>
+</blockquote>
+
+<ul>
+<li><code>oid</code> : 一行的对象标识符（对象ID）</li>
+<li><code>tableoid</code></li>
+<li><code>xmin</code></li>
+<li><code>cmin</code></li>
+<li><code>xmax</code></li>
+<li><code>cmax</code></li>
+<li><code>ctid</code></li>
+</ul>
+
+<blockquote>
+<p><a href="http://www.postgres.cn/docs/10/ddl-system-columns.html">http://www.postgres.cn/docs/10/ddl-system-columns.html</a></p>
+</blockquote>
+
+<h2 id="修改表">修改表</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> products <span style="color:#66d9ef">ADD</span> <span style="color:#66d9ef">COLUMN</span> description text;
+
+<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> products <span style="color:#66d9ef">ADD</span> <span style="color:#66d9ef">COLUMN</span> description text <span style="color:#66d9ef">CHECK</span> (description <span style="color:#f92672">&lt;&gt;</span> <span style="color:#e6db74">&#39;&#39;</span>);
+
+
+<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> products <span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">COLUMN</span> description;
+
+
+<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> products <span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">COLUMN</span> price <span style="color:#66d9ef">SET</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">7</span>.<span style="color:#ae81ff">77</span>;
+<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> products <span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">COLUMN</span> price <span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">DEFAULT</span>;</code></pre></div>
+<h2 id="schema-模式">Schema 模式</h2>
+
+<blockquote>
+<p>在SQL标准中没有 <code>public</code> 模式的概念。为了最大限度的与标准一致，我们不应使用（甚至是删除）<code>public</code>模式。</p>
+
+<p>某些SQL数据库系统可能根本没有实现模式，或者提供允许跨数据库访问的名字空间。如果需要使用这样一些系统，最好不要使用模式。</p>
+</blockquote>
+
+<ul>
+<li><p>Database</p>
+
+<ul>
+<li>Schema</li>
+
+<li><p>Table</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">SCHEMA</span> myschema;</code></pre></div></li>
+</ul></li>
+</ul>
+
+<p>在一个模式中创建或访问对象，需要使用由模式名和表名构成的限定名，模式名和表名之间以点号分隔：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> myschema.mytable (
+ ...
+);</code></pre></div>
+<h3 id="search-path">search_path</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SHOW</span> search_path;
+
+<span style="color:#66d9ef">SET</span> search_path <span style="color:#66d9ef">TO</span> myschema,<span style="color:#66d9ef">public</span>;</code></pre></div>
+<h3 id="内建-schema">内建 Schema</h3>
+
+<p>除<code>public</code>和用户创建的模式之外，每一个数据库还包括一个<code>pg_catalog</code>模式，它包含了系统表和所有内建的数据类型、函数以及操作符。<code>pg_catalog</code>总是搜索路径的一个有效部分。如果没有在路径中显式地包括该模式，它将在路径中的模式<strong>之前</strong>被搜索。这保证了内建的名称总是能被找到。然而，如果我们希望用用户定义的名称重载内建的名称，可以显式的将<code>pg_catalog</code>放在搜索路径的末尾。</p>
+
+<p>由于系统表名称以<code>pg_</code>开头，最好还是避免使用这样的名称，以避免和未来新版本中 可能出现的系统表名发生冲突。系统表将继续采用以<code>pg_</code>开头的方式，这样它们不会 与非限制的用户表名称冲突。</p>
+
+<h2 id="继承">继承</h2>
+
+<blockquote>
+<p>一个表可以继承另一个表的所有列：<a href="http://www.postgres.cn/docs/10/ddl-inherit.html">http://www.postgres.cn/docs/10/ddl-inherit.html</a></p>
+</blockquote>
+
+<h2 id="表分区">表分区</h2>
+
+<p>表分区指：将逻辑上的一个大表分成一些小的物理上的片</p>
+
+<ul>
+<li>在某些情况下查询性能能够显著提升，特别是当那些访问压力大的行在一个分区或者少数几个分区时。划分可以取代索引的主导列、减小索引尺寸以及使索引中访问压力大的部分更有可能被放在内存中。</li>
+<li>当查询或更新访问一个分区的大部分行时，可以通过该分区上的一个顺序扫描来取代分散到整个表上的索引和随机访问，这样可以改善性能。</li>
+<li>如果需求计划使用划分设计，可以通过增加或移除分区来完成批量载入和删除。 执行<code>ALTER TABLE DETACH PARTITION</code>或者使用<code>DROP TABLE</code> 删除一个单独的分区都远快于一个批量操作。这些命令也完全避免了由批量<code>DELETE</code>造成的<code>VACUUM</code>负载。</li>
+<li>很少使用的数据可以被迁移到便宜且较慢的存储介质上。</li>
+</ul>
+
+<h2 id="其他特性">其他特性</h2>
+
+<ul>
+<li><a href="http://www.postgres.cn/docs/10/ddl-foreign-data.html">外部数据</a></li>
+<li><a href="http://www.postgres.cn/docs/10/ddl-others.html">其他数据库对象</a></li>
+</ul>
+
+<h2 id="read-more">Read More</h2>
+
+<blockquote>
+<ul>
+<li><a href="http://www.postgres.cn/docs/10/ddl.html"><strong>第 5 章 数据定义</strong></a></li>
+</ul>
+</blockquote>
+</article>
+
+      
+<div class="book-footer justify-end">
+  
+  
+  <div>
+    <a href="https://github.com/hello-world-example/PostgreSQL/edit/master/HuGo/content/docs/Tutorial/DDL.md" target="_blank" rel="noopener">
+      <img src="/PostgreSQL/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#ddl-数据定义">DDL 数据定义</a>
+<ul>
+<li><a href="#表基础">表基础</a></li>
+<li><a href="#默认值">默认值</a></li>
+<li><a href="#约束">约束</a>
+<ul>
+<li><a href="#check">CHECK</a></li>
+<li><a href="#非空约束">非空约束</a></li>
+<li><a href="#唯一约束">唯一约束</a></li>
+<li><a href="#主键">主键</a></li>
+</ul></li>
+<li><a href="#系统列">系统列</a></li>
+<li><a href="#修改表">修改表</a></li>
+<li><a href="#schema-模式">Schema 模式</a>
+<ul>
+<li><a href="#search-path">search_path</a></li>
+<li><a href="#内建-schema">内建 Schema</a></li>
+</ul></li>
+<li><a href="#继承">继承</a></li>
+<li><a href="#表分区">表分区</a></li>
+<li><a href="#其他特性">其他特性</a></li>
+<li><a href="#read-more">Read More</a></li>
+</ul></li>
+</ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+  
+  
+  
+</body>
+
+</html>

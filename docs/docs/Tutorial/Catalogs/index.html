@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalogs | PostgreSQL</title>
+
+
+<link rel="stylesheet" href="/PostgreSQL/book.min.79de1f7861b0c98f453c0a93bebf3608a280809e417787746c373699639900d7.css">
+
+
+
+
+<link rel="icon" href="/PostgreSQL/favicon.png" type="image/x-icon">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" style="display: none" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://hello-world-example.github.io/PostgreSQL/">PostgreSQL</a>
+</h2>
+
+
+
+
+
+
+    
+  
+  
+  
+
+  <style>
+  nav ul a[href$="\2fPostgreSQL\2f docs\2fTutorial\2f Catalogs\2f "] {
+      color: #004ed0;
+  }
+  </style>
+
+<ul>
+<li><strong>Basic</strong>
+
+<ul>
+<li><a href="/PostgreSQL/docs/Basic/Install-In-MAC/">MAC 下安装 Postgres</a></li>
+<li><a href="/PostgreSQL/docs/Basic/MySQL.vs.PostgreSQL/">MySQL vs PostgreSQL</a></li>
+<li><a href="/PostgreSQL/docs/Basic/JDBC/">JDBC</a></li>
+</ul></li>
+<li><strong>Tutorial</strong>
+
+<ul>
+<li><a href="/PostgreSQL/docs/Tutorial/DDL/">DDL 数据定义</a></li>
+<li><a href="/PostgreSQL/docs/Tutorial/DataType/">数据类型</a></li>
+<li><a href="/PostgreSQL/docs/Tutorial/Catalogs/">系统表</a></li>
+<li><a href="/PostgreSQL/docs/Tutorial/Params/">常见参数</a></li>
+</ul></li>
+<li><strong>Action</strong>
+
+<ul>
+<li><a href="/PostgreSQL/docs/Action/Sequence/">自增主键</a></li>
+<li>_MODIFY_TIME 自动更新</li>
+</ul></li>
+<li><strong>Tools</strong>
+
+<ul>
+<li><a href="/PostgreSQL/docs/Tools/rds_dbsync/">rds_dbsync</a></li>
+</ul></li>
+</ul>
+
+
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+    </aside>
+
+    <div class="book-page">
+      <header class="flex align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/PostgreSQL/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>Catalogs</strong>
+</header>
+
+      
+<article class="markdown">
+
+<h1 id="catalogs-系统表">catalogs 系统表</h1>
+
+<blockquote>
+<p>官方文档： <a href="http://www.postgres.cn/docs/10/catalogs.html">第 51 章 系统目录</a></p>
+</blockquote>
+
+<h2 id="表-隐藏字段">[表] 隐藏字段</h2>
+
+<blockquote>
+<p>来自： <a href="https://blog.51cto.com/13126942/2050015">PostgreSQL &ndash; 表中的隐含字段</a></p>
+</blockquote>
+
+<ul>
+<li><code>oid</code> ： 行标示符
+
+<ul>
+<li>创建表的时候使用了 <code>WITH OIDS</code>，或者是设置了配置参数 <code>default_with_oids</code> 时出现</li>
+<li>字段的类型是 <code>oid</code> ，和字段同名</li>
+<li><code>OID</code> 是32位的量，有可能重叠</li>
+</ul></li>
+<li><code>tableoid</code> : 所在的 <code>oid</code>，对应 <code>pg_class</code> 中的 <code>oid</code>。从继承层次中选取的查询特别有用</li>
+<li><code>xmin</code>: 插入该行版本的事务的标识(事务ID)</li>
+<li><code>cmin</code>: 在插入事务内部的命令标识(从零开始)。</li>
+<li><code>xmax</code>: 删除事务的标识(事务ID)，如果不是被删除的行版本，那么是零。</li>
+<li><code>cmax</code>: 在删除事务内部的命令标识符，或者是零。</li>
+
+<li><p><code>ctid</code>: 一个行版本在它所处的表内的物理位置</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> tableoid::regclass <span style="color:#66d9ef">as</span> tablename,
+   oid, tableoid, cmax, cmin, xmin, xmax, ctid
+<span style="color:#66d9ef">from</span> pg_database;
+<span style="color:#75715e">-- ------------------------------
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> attr.<span style="color:#f92672">*</span>
+<span style="color:#66d9ef">from</span> pg_class <span style="color:#66d9ef">class</span>,
+ pg_attribute attr
+<span style="color:#66d9ef">where</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">and</span> <span style="color:#66d9ef">class</span>.relname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;表名&#39;</span>
+<span style="color:#66d9ef">and</span> <span style="color:#66d9ef">class</span>.oid <span style="color:#f92672">=</span> attr.attrelid <span style="color:#75715e">-- and attr.attstattarget = 0;</span></code></pre></div></li>
+</ul>
+
+<h2 id="表-pg-database">[表] pg_database</h2>
+
+<p>所有的数据库</p>
+
+<ul>
+<li><code>datname</code> 数据库名</li>
+</ul>
+
+<h2 id="表-pg-namespace">[表] pg_namespace</h2>
+
+<p>当前数据库的 Schema</p>
+
+<ul>
+<li><code>nspname</code> schema 的名字</li>
+<li><code>nspowner</code> schema 所有者 id <code>pg_authid.oid</code>  |  <code>pg_get_userbyid(xx)</code></li>
+</ul>
+
+<h2 id="表-pg-class">[表] pg_class</h2>
+
+<blockquote>
+<p><a href="http://www.postgres.cn/docs/10/catalog-pg-class.html">http://www.postgres.cn/docs/10/catalog-pg-class.html</a></p>
+</blockquote>
+
+<p><code>relkind</code>  字段标明，当前对象的类型：<code>r</code> = 普通表，<code>i</code> = 索引， <code>S</code> = 序列，<code>t</code> = TOAST 表，<code>v</code> = 视图， <code>m</code> = 物化视图， <code>c</code> = 组合类型， <code>f</code> = 外部表， <code>p</code> = 分区表</p>
+
+<ul>
+<li><code>relname</code> 表、索引、视图 等，名字</li>
+<li><code>relnamespace</code> ： <code>pg_namespace.oid</code></li>
+</ul>
+
+<h2 id="表-pg-attribute">[表] pg_attribute</h2>
+
+<blockquote>
+<ul>
+<li><a href="http://www.postgres.cn/docs/10/catalog-pg-attribute.html">http://www.postgres.cn/docs/10/catalog-pg-attribute.html</a></li>
+</ul>
+</blockquote>
+
+<p>表的字段的信息</p>
+
+<ul>
+<li><code>attrelid</code> 字段所属的表，对应于 <code>pg_class.oid</code></li>
+<li><code>attname</code> 字段名字</li>
+<li><code>atttypid</code> 这个字段的数据类型,对应于 <code>pg_type.oid</code></li>
+<li><code>attlen</code> 字段长度，<code>pg_type.typlen</code> 的拷贝</li>
+<li><code>attnotnull</code> 这代表一个非空约束。我们可以改变这个字段以打开或者关闭这个约束</li>
+</ul>
+
+<h2 id="表-pg-type">[表] pg_type</h2>
+
+<p>数据类型的信息</p>
+
+<ul>
+<li><code>typname</code> 数据类型名字</li>
+<li><code>typlen</code>
+
+<ul>
+<li>定长类型：是该类型内部表现形式的字节数目</li>
+<li>变长类型，typlen 是负数</li>
+<li>-1 表示一种&rdquo;变长&rdquo;类型（有长度字属性的数据）</li>
+<li>-2 表示这是一个 NULL 结尾的 C 字串。</li>
+</ul></li>
+</ul>
+
+<h2 id="表-pg-description">[表] pg_description</h2>
+
+<p>数据库中对象（表、字段等）的注释。</p>
+
+<ul>
+<li><code>objoid</code> 表 、表中字段的注释，对应 <code>pg_class.oid</code></li>
+<li><code>objsubid</code> 对于一个表字段的注释，它是字段号，对应于<code>pg_attribute.attnum</code>，表字段类型是 0</li>
+<li><code>description</code>  表、字段 注释</li>
+</ul>
+
+<h1 id="常用-sql">常用 SQL</h1>
+
+<h2 id="表结构">表结构</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> ns.nspname,                                  <span style="color:#75715e">-- schemaName
+</span><span style="color:#75715e"></span>       cla.OID,
+       cla.relname,                                 <span style="color:#75715e">-- tableName
+</span><span style="color:#75715e"></span>       attr.attname,                                <span style="color:#75715e">-- 列名
+</span><span style="color:#75715e"></span>       attr.attlen,                                 <span style="color:#75715e">-- 列类型长度长度
+</span><span style="color:#75715e"></span>       attr.attnotnull,                             <span style="color:#75715e">-- 非空
+</span><span style="color:#75715e"></span>       attr.attnum,                                 <span style="color:#75715e">-- 列顺序
+</span><span style="color:#75715e"></span>       tp.typname,                                  <span style="color:#75715e">-- 类型名
+</span><span style="color:#75715e"></span>       format_type(attr.atttypid, attr.atttypmod),
+       col_description(attr.attrelid, attr.attnum), <span style="color:#75715e">-- 列注释
+</span><span style="color:#75715e"></span>       def.adsrc                                    <span style="color:#75715e">-- 默认值
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">from</span> pg_namespace ns
+         <span style="color:#66d9ef">inner</span> <span style="color:#66d9ef">join</span> pg_class cla <span style="color:#66d9ef">on</span> cla.relnamespace <span style="color:#f92672">=</span> ns.OID
+         <span style="color:#66d9ef">inner</span> <span style="color:#66d9ef">join</span> pg_attribute attr <span style="color:#66d9ef">on</span> attr.attrelid <span style="color:#f92672">=</span> cla.OID <span style="color:#66d9ef">and</span> attr.attnum <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+         <span style="color:#66d9ef">inner</span> <span style="color:#66d9ef">join</span> pg_type tp <span style="color:#66d9ef">on</span> attr.atttypid <span style="color:#f92672">=</span> tp.OID
+         <span style="color:#66d9ef">left</span> <span style="color:#66d9ef">outer</span> <span style="color:#66d9ef">join</span> pg_attrdef def <span style="color:#66d9ef">on</span> def.adrelid <span style="color:#f92672">=</span> cla.OID <span style="color:#66d9ef">and</span> def.adnum <span style="color:#f92672">=</span> attr.attnum
+<span style="color:#66d9ef">where</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+  <span style="color:#66d9ef">and</span> ns.nspname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ttpai_boss_v1&#39;</span>
+  <span style="color:#66d9ef">and</span> cla.relname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;boss_account&#39;</span>
+<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> ns.nspname, cla.relname, attr.attnum</code></pre></div>
+<h2 id="表注释">表注释</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> clas.oid,
+       clas.relname    <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">table_name</span>,
+       dsk.description <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">comment</span>
+<span style="color:#66d9ef">FROM</span> pg_class clas
+         <span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span> pg_description dsk <span style="color:#66d9ef">ON</span> dsk.objsubid <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">AND</span> clas.oid <span style="color:#f92672">=</span> dsk.objoid
+<span style="color:#66d9ef">WHERE</span> clas.relnamespace <span style="color:#f92672">=</span> (<span style="color:#66d9ef">SELECT</span> oid <span style="color:#66d9ef">FROM</span> pg_namespace <span style="color:#66d9ef">WHERE</span> nspname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;schemaName&#39;</span>)
+  <span style="color:#66d9ef">AND</span> clas.relkind <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;r&#39;</span>
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> clas.relname</code></pre></div>
+<h2 id="确认一个对象是表还是视图">确认一个对象是表还是视图</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> ns.nspname,
+       clas.relname,
+       clas.relkind
+<span style="color:#66d9ef">from</span> pg_namespace ns,
+     pg_class clas
+<span style="color:#66d9ef">where</span> clas.relnamespace <span style="color:#f92672">=</span> ns.OID
+  <span style="color:#66d9ef">and</span> ns.nspname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;schemaName&#39;</span>
+  <span style="color:#66d9ef">and</span> clas.relname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;tableName&#39;</span></code></pre></div>
+<h1 id="read-more">Read More</h1>
+
+<ul>
+<li><a href="https://www.cnblogs.com/jxycn/p/5215822.html">postgresql用sql语句查询表结构</a></li>
+</ul>
+</article>
+
+      
+<div class="book-footer justify-end">
+  
+  
+  <div>
+    <a href="https://github.com/hello-world-example/PostgreSQL/edit/master/HuGo/content/docs/Tutorial/Catalogs.md" target="_blank" rel="noopener">
+      <img src="/PostgreSQL/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#catalogs-系统表">catalogs 系统表</a>
+<ul>
+<li><a href="#表-隐藏字段">[表] 隐藏字段</a></li>
+<li><a href="#表-pg-database">[表] pg_database</a></li>
+<li><a href="#表-pg-namespace">[表] pg_namespace</a></li>
+<li><a href="#表-pg-class">[表] pg_class</a></li>
+<li><a href="#表-pg-attribute">[表] pg_attribute</a></li>
+<li><a href="#表-pg-type">[表] pg_type</a></li>
+<li><a href="#表-pg-description">[表] pg_description</a></li>
+</ul></li>
+<li><a href="#常用-sql">常用 SQL</a>
+<ul>
+<li><a href="#表结构">表结构</a></li>
+<li><a href="#表注释">表注释</a></li>
+<li><a href="#确认一个对象是表还是视图">确认一个对象是表还是视图</a></li>
+</ul></li>
+<li><a href="#read-more">Read More</a></li>
+</ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+  
+  
+  
+</body>
+
+</html>

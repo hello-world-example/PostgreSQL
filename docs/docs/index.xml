@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docs on PostgreSQL</title>
+    <link>https://hello-world-example.github.io/PostgreSQL/docs/</link>
+    <description>Recent content in Docs on PostgreSQL</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://hello-world-example.github.io/PostgreSQL/docs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/PostgreSQL/docs/Action/Sequence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/PostgreSQL/docs/Action/Sequence/</guid>
+      <description>http://n3xtchen.github.io/n3xtchen/postgresql/2015/04/10/postgresql-sequence
+https://blog.csdn.net/WwJoyous/article/details/78142750
+https://blog.csdn.net/u011042248/article/details/49422305</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/PostgreSQL/docs/Basic/Install-In-MAC/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/PostgreSQL/docs/Basic/Install-In-MAC/</guid>
+      <description>MAC 下安装 Postgres  进入下载页面：https://www.postgresql.org/download/ 选择 macOS：https://www.postgresql.org/download/macosx/ 选择 Postgres.app：https://postgresapp.com/ 选择指定版本下载，这里下载的是 PostgreSQL 11  下载后双击打开 拖动到 Applications 文件夹 安装成功  双击打开 Postgres 应用  点击 Initialize 即可开启 Postgres 服务  默认安装目录  /Applications/Postgres.app/Contents/Versions/latest/bin  默认数据文件目录  /Users/kail/Library/Application Support/Postgres/var-11  默认链接方式  localhost:5432 Databasepostgres User: postgres Password None Connection URL postgresql://localhost   Read More  https://postgresapp.com/  Graphical Clients pgAdmin 4 Postico How to connect PostgreSQL JDBC driver official PostgreSQL JDBC documentation   Debian Linux  阮一峰 PostgreSQL新手入门</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/PostgreSQL/docs/Basic/JDBC/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/PostgreSQL/docs/Basic/JDBC/</guid>
+      <description>JDBC Current Version 42.2.5
+ 支持 PostgreSQL 8.2+ 支持 JDK6+  Maven &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.postgresql&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;postgresql&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;42.2.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; Hello World import java.sql.*; public class HelloJdbcMain { public static void main(String[] args) throws ClassNotFoundException, SQLException { /* * 1. 注册驱动 * https://jdbc.postgresql.org/documentation/head/load.html * * org.postgresql.Driver.register(); */ Class.forName(&amp;#34;org.postgresql.Driver&amp;#34;); /* * ❤❤❤ Connecting to the Database： * ❤❤❤ https://jdbc.postgresql.org/documentation/head/connect.html */ String url = &amp;#34;jdbc:postgresql://localhost:5432/kail&amp;#34;; try (Connection connection = DriverManager.getConnection(url, &amp;#34;postgres&amp;#34;, &amp;#34;&amp;#34;)) { /* * Chapter 5.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/PostgreSQL/docs/Basic/MySQL.vs.PostgreSQL/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/PostgreSQL/docs/Basic/MySQL.vs.PostgreSQL/</guid>
+      <description> MySQL vs PostgreSQL     MySQL PostgreSQL      号称最流行 号称最先进    text 字段有不同的限制 text 能支持各种大小    单表自增 多个表从同一个序列中取 ID    可以用多级从库 9.2之前，不能用从库带从库         PostgreSQL 高级特性  可以在 array 和json 上建索引，甚至还能用表达式索引 NoSQL：JSON，JSONB，XML，HStore原生支持，至NoSQL数据库的外部数据包装器。 支持服务器端脚本 地理信息处理(GIS) 高效处理树结构 可以把 70 种外部数据源 (包括 MySQL, Oracle, CSV, hadoop &amp;hellip;) 当成自己数据库中的表来查询 图数据：递归查询，高效处理图结构, 轻松实现 &amp;ldquo;朋友的朋友的朋友&amp;rdquo; 缓存：物化视图 数据仓库：能平滑迁移至同属Pg生态的GreenPlum，DeepGreen，HAWK等，使用FDW进行ETL OLAP：citus分布式插件，ANSI SQL兼容，窗口函数，CTE，CUBE等高级分析功能，任意语言写UDF 搜索索引：全文搜索索引足以应对简单场景；丰富的索引类型，支持函数索引，条件索引 时序数据：timescaledb时序数据库插件，分区表，BRIN索引  Read More  “王者对战”之 MySQL 8 vs PostgreSQL 10 MySQL · 源码分析 · InnoDB Repeatable Read隔离级别之大不同 PostgreSQL 与 MySQL 相比，优势何在？  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/PostgreSQL/docs/Tools/rds_dbsync/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/PostgreSQL/docs/Tools/rds_dbsync/</guid>
+      <description>MySQL 全量同步 Postgres工具 非 Linux环境下如何使用 MAC 下无法执行编译好的可执行文件，可以通过 Docker 运行
+$ docker pull centos # 运行 $ docker run -t -d --net=host --name=centos centos # 进入容器 $ docker exec -it centos bash [docker]$ yum update [docker]$ yum install wget [docker]$ yum install vim [docker]$ cd ~ [docker]$ wget https://github.com/aliyun/rds_dbsync/files/919279/mysql2pgsql.bin.el6.20170413.tar.gz [docker]$ tar zxvf mysql2pgsql.bin.el6.20170413.tar.gz [docker]$ cd /root/mysql2pgsql.bin.el6.20170413/bin # 运行 [docker]$ ./mysql2pgsql -d   如何设置PostgreSQL远程访问   修改配置文件 [src.mysql] host = &amp;#34;192.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/PostgreSQL/docs/Tutorial/Catalogs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/PostgreSQL/docs/Tutorial/Catalogs/</guid>
+      <description>catalogs 系统表  官方文档： 第 51 章 系统目录
+ [表] 隐藏字段  来自： PostgreSQL &amp;ndash; 表中的隐含字段
+  oid ： 行标示符  创建表的时候使用了 WITH OIDS，或者是设置了配置参数 default_with_oids 时出现 字段的类型是 oid ，和字段同名 OID 是32位的量，有可能重叠  tableoid : 所在的 oid，对应 pg_class 中的 oid。从继承层次中选取的查询特别有用 xmin: 插入该行版本的事务的标识(事务ID) cmin: 在插入事务内部的命令标识(从零开始)。 xmax: 删除事务的标识(事务ID)，如果不是被删除的行版本，那么是零。 cmax: 在删除事务内部的命令标识符，或者是零。 ctid: 一个行版本在它所处的表内的物理位置
+select tableoid::regclass as tablename, oid, tableoid, cmax, cmin, xmin, xmax, ctid from pg_database; -- ------------------------------ select attr.* from pg_class class, pg_attribute attr where 1 = 1 and class.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/PostgreSQL/docs/Tutorial/DataType/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/PostgreSQL/docs/Tutorial/DataType/</guid>
+      <description> 数据类型 PostgreSQL有着丰富的本地数据类型可用。用户可以使用CREATE TYPE命令为 PostgreSQL增加新的数据类型。
+   名字 别名 描述     bigint int8 有符号的8字节整数   bigserial serial8 自动增长的8字节整数   bit [ (*n*) ]  定长位串   bit varying [ (*n*) ] varbit 变长位串   boolean bool 逻辑布尔值（真/假）   box  平面上的普通方框   bytea  二进制数据（“字节数组”）   character [ (*n*) ] char [ (*n*) ] 定长字符串   character varying [ (*n*) ] varchar [ (*n*) ] 变长字符串   cidr  IPv4或IPv6网络地址   circle  平面上的圆   date  日历日期（年、月、日）   double precision float8 双精度浮点数（8字节）   inet  IPv4或IPv6主机地址   integer int, int4 有符号4字节整数   interval [ *fields* ] [ (*p*) ]  时间段   json  文本 JSON 数据   jsonb  二进制 JSON 数据，已分解   line  平面上的无限长的线   lseg  平面上的线段   macaddr  MAC（Media Access Control）地址   macaddr8  MAC (Media Access Control) 地址 (EUI-64 格式)   money  货币数量   numeric [ (*p*, *s*) ] decimal [ (*p*, *s*) ] 可选择精度的精确数字   path  平面上的几何路径   pg_lsn  PostgreSQL日志序列号   point  平面上的几何点   polygon  平面上的封闭几何路径   real float4 单精度浮点数（4字节）   smallint int2 有符号2字节整数   smallserial serial2 自动增长的2字节整数   serial serial4 自动增长的4字节整数   text  变长字符串   time [ (*p*) ] [ without time zone ]  一天中的时间（无时区）   time [ (*p*) ] with time zone timetz 一天中的时间，包括时区   timestamp [ (*p*) ] [ without time zone ]  日期和时间（无时区）   timestamp [ (*p*) ] with time zone timestamptz 日期和时间，包括时区   tsquery  文本搜索查询   tsvector  文本搜索文档   txid_snapshot  用户级别事务ID快照   uuid  通用唯一标识码   xml  XML数据    Read More   第 8 章 数据类型   </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/PostgreSQL/docs/Tutorial/DDL/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/PostgreSQL/docs/Tutorial/DDL/</guid>
+      <description>DDL 数据定义 表基础 CREATE TABLE products ( product_no integer, name text, price numeric );  SQL 命令 CREATE TABLE
+ 默认值 CREATE TABLE products ( product_no integer DEFAULT nextval(&amp;#39;products_product_no_seq&amp;#39;), name text, price numeric DEFAULT 9.99, create_time timestamp DEFAULT CURRENT_TIMESTAMP );CREATE TABLE products ( product_no SERIAL, ... ); 约束 CHECK CREATE TABLE products ( product_no integer, name text, price numeric CHECK (price &amp;gt; 0) ); 给与约束一个独立的名称
+CREATE TABLE products ( product_no integer, name text, price numeric CONSTRAINT positive_price CHECK (price &amp;gt; 0) ); 一个检查约束也可以引用多个列</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/PostgreSQL/docs/Tutorial/Params/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/PostgreSQL/docs/Tutorial/Params/</guid>
+      <description> 常见参数    参数 默认值 可用值 描述     enable_nestloop   是否允许走nestloop连接   enable_seqscan   是否走全表扫描   enable_hashjoin   否允许走hash连接   gp_autostats_mode   是否收集统计信息    Read More  第 19 章 服务器配置 - 19.7. 查询规划 Greenplum优化&amp;ndash;SQL调优篇  </description>
+    </item>
+    
+  </channel>
+</rss>

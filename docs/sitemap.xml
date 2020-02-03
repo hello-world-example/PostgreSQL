@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://hello-world-example.github.io/PostgreSQL/_sidebar/</loc>
+  </url>
+  
+  <url>
+    <loc>https://hello-world-example.github.io/PostgreSQL/docs/Action/Sequence/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hello-world-example.github.io/PostgreSQL/docs/Basic/Install-In-MAC/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hello-world-example.github.io/PostgreSQL/docs/Basic/JDBC/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hello-world-example.github.io/PostgreSQL/docs/Basic/MySQL.vs.PostgreSQL/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hello-world-example.github.io/PostgreSQL/docs/Tools/rds_dbsync/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hello-world-example.github.io/PostgreSQL/docs/Tutorial/Catalogs/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hello-world-example.github.io/PostgreSQL/docs/Tutorial/DataType/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hello-world-example.github.io/PostgreSQL/docs/Tutorial/DDL/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hello-world-example.github.io/PostgreSQL/docs/Tutorial/Params/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hello-world-example.github.io/PostgreSQL/todo/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hello-world-example.github.io/PostgreSQL/docs/</loc>
+  </url>
+  
+  <url>
+    <loc>https://hello-world-example.github.io/PostgreSQL/</loc>
+  </url>
+  
+</urlset>

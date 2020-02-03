@@ -2,10 +2,9 @@
 <html lang="en">
 
 <head>
-	<meta name="generator" content="Hugo 0.57.2" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PostgreSQL | PostgreSQL</title>
+<title>Params | PostgreSQL</title>
 
 
 <link rel="stylesheet" href="/PostgreSQL/book.min.79de1f7861b0c98f453c0a93bebf3608a280809e417787746c373699639900d7.css">
@@ -16,7 +15,6 @@
 <link rel="icon" href="/PostgreSQL/favicon.png" type="image/x-icon">
 
 
-<link rel="alternate" type="application/rss+xml" href="https://hello-world-example.github.io/PostgreSQL/index.xml" title="PostgreSQL" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -46,7 +44,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   <style>
-  nav ul a[href$="\2fPostgreSQL\2f "] {
+  nav ul a[href$="\2fPostgreSQL\2f docs\2fTutorial\2fParams\2f "] {
       color: #004ed0;
   }
   </style>
@@ -106,24 +104,60 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/PostgreSQL/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>PostgreSQL</strong>
+  <strong>Params</strong>
 </header>
 
       
-<article class="markdown"><ul>
-<li><a href="https://www.postgresql.org/">官网</a></li>
-<li><a href="http://www.postgres.cn">中文社区</a>
+<article class="markdown">
+
+<h1 id="常见参数">常见参数</h1>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>默认值</th>
+<th>可用值</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>enable_nestloop</td>
+<td></td>
+<td></td>
+<td>是否允许走nestloop连接</td>
+</tr>
+
+<tr>
+<td>enable_seqscan</td>
+<td></td>
+<td></td>
+<td>是否走全表扫描</td>
+</tr>
+
+<tr>
+<td>enable_hashjoin</td>
+<td></td>
+<td></td>
+<td>否允许走hash连接</td>
+</tr>
+
+<tr>
+<td>gp_autostats_mode</td>
+<td></td>
+<td></td>
+<td>是否收集统计信息</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="read-more">Read More</h2>
 
 <ul>
-<li><a href="http://www.postgres.cn/v2/document">文档资料</a></li>
-<li><a href="http://www.postgres.cn/v2/book">图书</a></li>
-</ul></li>
-<li><a href="http://www.postgres.cn/docs/10/">PostgreSQL 10.1 手册</a></li>
-<li><a href="https://github.com/digoal/blog">digoal/blog 专题</a></li>
-<li><a href="http://mysql.taobao.org/monthly/2017/01/08/">PgSQL · 乱入拜年 · 小鸡吉吉和小象Pi吉(PostgreSQL)的鸡年传奇</a></li>
-<li><a href="http://www.postgres.cn/v2/news/viewone/1/52">PostgreSQL 昨天,今天和明天</a>
-
-<br /></li>
+<li>第 19 章 服务器配置 - <a href="http://www.postgres.cn/docs/10/runtime-config-query.html">19.7. 查询规划</a></li>
+<li><a href="https://blog.csdn.net/u012948976/article/details/52695397">Greenplum优化&ndash;SQL调优篇</a></li>
 </ul>
 </article>
 
@@ -132,7 +166,7 @@ https://github.com/alex-shpak/hugo-book
   
   
   <div>
-    <a href="https://github.com/hello-world-example/PostgreSQL/edit/master/HuGo/content/_index.md" target="_blank" rel="noopener">
+    <a href="https://github.com/hello-world-example/PostgreSQL/edit/master/HuGo/content/docs/Tutorial/Params.md" target="_blank" rel="noopener">
       <img src="/PostgreSQL/svg/edit.svg" alt="Edit" /> Edit this page
     </a>
   </div>
@@ -145,6 +179,17 @@ https://github.com/alex-shpak/hugo-book
 
     
   
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#常见参数">常见参数</a>
+<ul>
+<li><a href="#read-more">Read More</a></li>
+</ul></li>
+</ul>
+</nav>
+  </aside>
 
 
 

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Type | PostgreSQL</title>
+
+
+<link rel="stylesheet" href="/PostgreSQL/book.min.79de1f7861b0c98f453c0a93bebf3608a280809e417787746c373699639900d7.css">
+
+
+
+
+<link rel="icon" href="/PostgreSQL/favicon.png" type="image/x-icon">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" style="display: none" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://hello-world-example.github.io/PostgreSQL/">PostgreSQL</a>
+</h2>
+
+
+
+
+
+
+    
+  
+  
+  
+
+  <style>
+  nav ul a[href$="\2fPostgreSQL\2f docs\2fTutorial\2f DataType\2f "] {
+      color: #004ed0;
+  }
+  </style>
+
+<ul>
+<li><strong>Basic</strong>
+
+<ul>
+<li><a href="/PostgreSQL/docs/Basic/Install-In-MAC/">MAC 下安装 Postgres</a></li>
+<li><a href="/PostgreSQL/docs/Basic/MySQL.vs.PostgreSQL/">MySQL vs PostgreSQL</a></li>
+<li><a href="/PostgreSQL/docs/Basic/JDBC/">JDBC</a></li>
+</ul></li>
+<li><strong>Tutorial</strong>
+
+<ul>
+<li><a href="/PostgreSQL/docs/Tutorial/DDL/">DDL 数据定义</a></li>
+<li><a href="/PostgreSQL/docs/Tutorial/DataType/">数据类型</a></li>
+<li><a href="/PostgreSQL/docs/Tutorial/Catalogs/">系统表</a></li>
+<li><a href="/PostgreSQL/docs/Tutorial/Params/">常见参数</a></li>
+</ul></li>
+<li><strong>Action</strong>
+
+<ul>
+<li><a href="/PostgreSQL/docs/Action/Sequence/">自增主键</a></li>
+<li>_MODIFY_TIME 自动更新</li>
+</ul></li>
+<li><strong>Tools</strong>
+
+<ul>
+<li><a href="/PostgreSQL/docs/Tools/rds_dbsync/">rds_dbsync</a></li>
+</ul></li>
+</ul>
+
+
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+    </aside>
+
+    <div class="book-page">
+      <header class="flex align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/PostgreSQL/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>Data Type</strong>
+</header>
+
+      
+<article class="markdown">
+
+<h1 id="数据类型">数据类型</h1>
+
+<p>PostgreSQL有着丰富的本地数据类型可用。<strong>用户可以使用<a href="http://www.postgres.cn/docs/10/sql-createtype.html">CREATE TYPE</a>命令为 PostgreSQL增加新的数据类型。</strong></p>
+
+<table>
+<thead>
+<tr>
+<th>名字</th>
+<th>别名</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>bigint</code></td>
+<td><code>int8</code></td>
+<td><strong>有符号的8字节整数</strong></td>
+</tr>
+
+<tr>
+<td><code>bigserial</code></td>
+<td><code>serial8</code></td>
+<td><strong>自动增长的8字节整数</strong></td>
+</tr>
+
+<tr>
+<td><code>bit [ (*n*) ]</code></td>
+<td></td>
+<td>定长位串</td>
+</tr>
+
+<tr>
+<td><code>bit varying [ (*n*) ]</code></td>
+<td><code>varbit</code></td>
+<td>变长位串</td>
+</tr>
+
+<tr>
+<td><code>boolean</code></td>
+<td><code>bool</code></td>
+<td>逻辑布尔值（真/假）</td>
+</tr>
+
+<tr>
+<td><code>box</code></td>
+<td></td>
+<td>平面上的普通方框</td>
+</tr>
+
+<tr>
+<td><code>bytea</code></td>
+<td></td>
+<td>二进制数据（“字节数组”）</td>
+</tr>
+
+<tr>
+<td><code>character [ (*n*) ]</code></td>
+<td><code>char [ (*n*) ]</code></td>
+<td>定长字符串</td>
+</tr>
+
+<tr>
+<td><code>character varying [ (*n*) ]</code></td>
+<td><code>varchar [ (*n*) ]</code></td>
+<td><strong>变长字符串</strong></td>
+</tr>
+
+<tr>
+<td><code>cidr</code></td>
+<td></td>
+<td>IPv4或IPv6网络地址</td>
+</tr>
+
+<tr>
+<td><code>circle</code></td>
+<td></td>
+<td>平面上的圆</td>
+</tr>
+
+<tr>
+<td><code>date</code></td>
+<td></td>
+<td><strong>日历日期（年、月、日）</strong></td>
+</tr>
+
+<tr>
+<td><code>double precision</code></td>
+<td><code>float8</code></td>
+<td>双精度浮点数（8字节）</td>
+</tr>
+
+<tr>
+<td><code>inet</code></td>
+<td></td>
+<td>IPv4或IPv6主机地址</td>
+</tr>
+
+<tr>
+<td><code>integer</code></td>
+<td><code>int</code>, <code>int4</code></td>
+<td><strong>有符号4字节整数</strong></td>
+</tr>
+
+<tr>
+<td><code>interval [ *fields* ] [ (*p*) ]</code></td>
+<td></td>
+<td>时间段</td>
+</tr>
+
+<tr>
+<td><code>json</code></td>
+<td></td>
+<td>文本 JSON 数据</td>
+</tr>
+
+<tr>
+<td><code>jsonb</code></td>
+<td></td>
+<td>二进制 JSON 数据，已分解</td>
+</tr>
+
+<tr>
+<td><code>line</code></td>
+<td></td>
+<td>平面上的无限长的线</td>
+</tr>
+
+<tr>
+<td><code>lseg</code></td>
+<td></td>
+<td>平面上的线段</td>
+</tr>
+
+<tr>
+<td><code>macaddr</code></td>
+<td></td>
+<td>MAC（Media Access Control）地址</td>
+</tr>
+
+<tr>
+<td><code>macaddr8</code></td>
+<td></td>
+<td>MAC (Media Access Control) 地址 (EUI-64 格式)</td>
+</tr>
+
+<tr>
+<td><code>money</code></td>
+<td></td>
+<td><strong>货币数量</strong></td>
+</tr>
+
+<tr>
+<td><code>numeric [ (*p*, *s*) ]</code></td>
+<td><code>decimal [ (*p*, *s*) ]</code></td>
+<td><strong>可选择精度的精确数字</strong></td>
+</tr>
+
+<tr>
+<td><code>path</code></td>
+<td></td>
+<td>平面上的几何路径</td>
+</tr>
+
+<tr>
+<td><code>pg_lsn</code></td>
+<td></td>
+<td>PostgreSQL日志序列号</td>
+</tr>
+
+<tr>
+<td><code>point</code></td>
+<td></td>
+<td>平面上的几何点</td>
+</tr>
+
+<tr>
+<td><code>polygon</code></td>
+<td></td>
+<td>平面上的封闭几何路径</td>
+</tr>
+
+<tr>
+<td><code>real</code></td>
+<td><code>float4</code></td>
+<td>单精度浮点数（4字节）</td>
+</tr>
+
+<tr>
+<td><code>smallint</code></td>
+<td><code>int2</code></td>
+<td><strong>有符号2字节整数</strong></td>
+</tr>
+
+<tr>
+<td><code>smallserial</code></td>
+<td><code>serial2</code></td>
+<td><strong>自动增长的2字节整数</strong></td>
+</tr>
+
+<tr>
+<td><code>serial</code></td>
+<td><code>serial4</code></td>
+<td><strong>自动增长的4字节整数</strong></td>
+</tr>
+
+<tr>
+<td><code>text</code></td>
+<td></td>
+<td><strong>变长字符串</strong></td>
+</tr>
+
+<tr>
+<td><code>time [ (*p*) ] [ without time zone ]</code></td>
+<td></td>
+<td>一天中的时间（无时区）</td>
+</tr>
+
+<tr>
+<td><code>time [ (*p*) ] with time zone</code></td>
+<td><code>timetz</code></td>
+<td>一天中的时间，包括时区</td>
+</tr>
+
+<tr>
+<td><code>timestamp [ (*p*) ] [ without time zone ]</code></td>
+<td></td>
+<td><strong>日期和时间（无时区）</strong></td>
+</tr>
+
+<tr>
+<td><code>timestamp [ (*p*) ] with time zone</code></td>
+<td><code>timestamptz</code></td>
+<td>日期和时间，包括时区</td>
+</tr>
+
+<tr>
+<td><code>tsquery</code></td>
+<td></td>
+<td>文本搜索查询</td>
+</tr>
+
+<tr>
+<td><code>tsvector</code></td>
+<td></td>
+<td>文本搜索文档</td>
+</tr>
+
+<tr>
+<td><code>txid_snapshot</code></td>
+<td></td>
+<td>用户级别事务ID快照</td>
+</tr>
+
+<tr>
+<td><code>uuid</code></td>
+<td></td>
+<td>通用唯一标识码</td>
+</tr>
+
+<tr>
+<td><code>xml</code></td>
+<td></td>
+<td>XML数据</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="read-more">Read More</h2>
+
+<blockquote>
+<ul>
+<li><a href="http://www.postgres.cn/docs/10/datatype.html">第 8 章 数据类型</a></li>
+</ul>
+</blockquote>
+</article>
+
+      
+<div class="book-footer justify-end">
+  
+  
+  <div>
+    <a href="https://github.com/hello-world-example/PostgreSQL/edit/master/HuGo/content/docs/Tutorial/DataType.md" target="_blank" rel="noopener">
+      <img src="/PostgreSQL/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#数据类型">数据类型</a>
+<ul>
+<li><a href="#read-more">Read More</a></li>
+</ul></li>
+</ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+  
+  
+  
+</body>
+
+</html>
