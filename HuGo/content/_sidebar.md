@@ -3,6 +3,7 @@ headless: true
 ---
 
 * **Basic**
+  * [通过 Docker 安装]({{< relref "/docs/Basic/Install-By-Docker.md" >}})
   * [MAC 下安装 Postgres]({{< relref "/docs/Basic/Install-In-MAC.md" >}})
   * [MySQL vs PostgreSQL]({{< relref "/docs/Basic/MySQL.vs.PostgreSQL.md" >}})
   * [JDBC]({{< relref "/docs/Basic/JDBC.md" >}})

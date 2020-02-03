@@ -22,6 +22,15 @@ https://blog.csdn.net/u011042248/article/details/49422305</description>
     
     <item>
       <title></title>
+      <link>https://hello-world-example.github.io/PostgreSQL/docs/Basic/Install-By-Docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/PostgreSQL/docs/Basic/Install-By-Docker/</guid>
+      <description> 通过 Docker 安装 # 启动，默认账户: postgres/postgres $ docker run -d --restart=always \  -p 5432:5432 \  -e &amp;#34;POSTGRES_PASSWORD=postgres&amp;#34; \  --name postgres-9.6 \  postgres:9.6.15 # 进入 psql $ docker exec -it postgres-9.6 psql -U postgres # 退出 psql \q Read More  Docker Hub postgres  </description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://hello-world-example.github.io/PostgreSQL/docs/Basic/Install-In-MAC/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
