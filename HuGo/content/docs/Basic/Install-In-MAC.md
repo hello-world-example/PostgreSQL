@@ -1,5 +1,7 @@
 # MAC 下安装 Postgres
 
+## 安装
+
 1. 进入下载页面：https://www.postgresql.org/download/
 2. 选择 macOS：https://www.postgresql.org/download/macosx/
 3. 选择 Postgres.app：https://postgresapp.com/
@@ -19,6 +21,17 @@
    3. User: `postgres`
    4. Password `None`
    5. Connection URL `postgresql://localhost`
+
+## 卸载
+
+```bash
+删除 Postgres app
+
+# 删除配置
+$ rm -rf /Users/kail/Library/Application\ Support/Postgres
+```
+
+
 
 ## Read More
 
