@@ -7,7 +7,7 @@
 <title>Install by Docker | PostgreSQL</title>
 
 
-<link rel="stylesheet" href="/PostgreSQL/book.min.79de1f7861b0c98f453c0a93bebf3608a280809e417787746c373699639900d7.css">
+<link rel="stylesheet" href="/PostgreSQL/book.min.a2277534155c5e81ce2c8ca6a4cd295525f25c75788a2e4e72c3310491c743b1.css">
 
 
 
@@ -51,32 +51,32 @@ https://github.com/alex-shpak/hugo-book
 
 <ul>
 <li><strong>Basic</strong>
-
 <ul>
 <li><a href="/PostgreSQL/docs/Basic/Install-By-Docker/">通过 Docker 安装</a></li>
 <li><a href="/PostgreSQL/docs/Basic/Install-In-MAC/">MAC 下安装 Postgres</a></li>
 <li><a href="/PostgreSQL/docs/Basic/MySQL.vs.PostgreSQL/">MySQL vs PostgreSQL</a></li>
 <li><a href="/PostgreSQL/docs/Basic/JDBC/">JDBC</a></li>
-</ul></li>
+</ul>
+</li>
 <li><strong>Tutorial</strong>
-
 <ul>
 <li><a href="/PostgreSQL/docs/Tutorial/DDL/">DDL 数据定义</a></li>
 <li><a href="/PostgreSQL/docs/Tutorial/DataType/">数据类型</a></li>
 <li><a href="/PostgreSQL/docs/Tutorial/Catalogs/">系统表</a></li>
 <li><a href="/PostgreSQL/docs/Tutorial/Params/">常见参数</a></li>
-</ul></li>
+</ul>
+</li>
 <li><strong>Action</strong>
-
 <ul>
 <li><a href="/PostgreSQL/docs/Action/Sequence/">自增主键</a></li>
 <li>_MODIFY_TIME 自动更新</li>
-</ul></li>
+</ul>
+</li>
 <li><strong>Tools</strong>
-
 <ul>
 <li><a href="/PostgreSQL/docs/Tools/rds_dbsync/">rds_dbsync</a></li>
-</ul></li>
+</ul>
+</li>
 </ul>
 
 
@@ -109,12 +109,10 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown">
-
-<h1 id="通过-docker-安装">通过 Docker 安装</h1>
+<article class="markdown"><h1 id="通过-docker-安装">通过 Docker 安装</h1>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 启动，默认账户: postgres/postgres</span>
 $ docker run -d --restart<span style="color:#f92672">=</span>always <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -p <span style="color:#ae81ff">5432</span>:5432 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -p 5432:5432 <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  -e <span style="color:#e6db74">&#34;POSTGRES_PASSWORD=postgres&#34;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --name postgres-9.6 <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  postgres:9.6.15
@@ -123,9 +121,8 @@ $ docker run -d --restart<span style="color:#f92672">=</span>always <span style=
 <span style="color:#75715e"># 进入 psql</span>
 $ docker exec -it postgres-9.6 psql -U postgres
 <span style="color:#75715e"># 退出 psql</span>
-<span style="color:#ae81ff">\q</span></code></pre></div>
-<h2 id="read-more">Read More</h2>
-
+<span style="color:#ae81ff">\q</span>
+</code></pre></div><h2 id="read-more">Read More</h2>
 <ul>
 <li>Docker Hub <a href="https://hub.docker.com/_/postgres">postgres</a></li>
 </ul>
@@ -159,12 +156,9 @@ $ docker exec -it postgres-9.6 psql -U postgres
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#通过-docker-安装">通过 Docker 安装</a>
-<ul>
-<li><a href="#read-more">Read More</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#read-more">Read More</a></li>
+  </ul>
 </nav>
   </aside>
 

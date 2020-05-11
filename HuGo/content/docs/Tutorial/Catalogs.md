@@ -123,8 +123,8 @@ from pg_namespace ns
          inner join pg_type tp on attr.atttypid = tp.OID
          left outer join pg_attrdef def on def.adrelid = cla.OID and def.adnum = attr.attnum
 where 1 = 1
-  and ns.nspname = 'ttpai_boss_v1'
-  and cla.relname = 'boss_account'
+  and ns.nspname = 'namespase'
+  and cla.relname = 'tablename'
 order by ns.nspname, cla.relname, attr.attnum
 ```
 

@@ -7,7 +7,7 @@
 <title>Install in M a C | PostgreSQL</title>
 
 
-<link rel="stylesheet" href="/PostgreSQL/book.min.79de1f7861b0c98f453c0a93bebf3608a280809e417787746c373699639900d7.css">
+<link rel="stylesheet" href="/PostgreSQL/book.min.a2277534155c5e81ce2c8ca6a4cd295525f25c75788a2e4e72c3310491c743b1.css">
 
 
 
@@ -51,32 +51,32 @@ https://github.com/alex-shpak/hugo-book
 
 <ul>
 <li><strong>Basic</strong>
-
 <ul>
 <li><a href="/PostgreSQL/docs/Basic/Install-By-Docker/">通过 Docker 安装</a></li>
 <li><a href="/PostgreSQL/docs/Basic/Install-In-MAC/">MAC 下安装 Postgres</a></li>
 <li><a href="/PostgreSQL/docs/Basic/MySQL.vs.PostgreSQL/">MySQL vs PostgreSQL</a></li>
 <li><a href="/PostgreSQL/docs/Basic/JDBC/">JDBC</a></li>
-</ul></li>
+</ul>
+</li>
 <li><strong>Tutorial</strong>
-
 <ul>
 <li><a href="/PostgreSQL/docs/Tutorial/DDL/">DDL 数据定义</a></li>
 <li><a href="/PostgreSQL/docs/Tutorial/DataType/">数据类型</a></li>
 <li><a href="/PostgreSQL/docs/Tutorial/Catalogs/">系统表</a></li>
 <li><a href="/PostgreSQL/docs/Tutorial/Params/">常见参数</a></li>
-</ul></li>
+</ul>
+</li>
 <li><strong>Action</strong>
-
 <ul>
 <li><a href="/PostgreSQL/docs/Action/Sequence/">自增主键</a></li>
 <li>_MODIFY_TIME 自动更新</li>
-</ul></li>
+</ul>
+</li>
 <li><strong>Tools</strong>
-
 <ul>
 <li><a href="/PostgreSQL/docs/Tools/rds_dbsync/">rds_dbsync</a></li>
-</ul></li>
+</ul>
+</li>
 </ul>
 
 
@@ -109,71 +109,69 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown">
-
-<h1 id="mac-下安装-postgres">MAC 下安装 Postgres</h1>
-
+<article class="markdown"><h1 id="mac-下安装-postgres">MAC 下安装 Postgres</h1>
 <h2 id="安装">安装</h2>
-
 <ol>
-<li>进入下载页面：<a href="https://www.postgresql.org/download/">https://www.postgresql.org/download/</a></li>
-<li>选择 macOS：<a href="https://www.postgresql.org/download/macosx/">https://www.postgresql.org/download/macosx/</a></li>
-<li>选择 Postgres.app：<a href="https://postgresapp.com/">https://postgresapp.com/</a></li>
+<li>进入下载页面：https://www.postgresql.org/download/</li>
+<li>选择 macOS：https://www.postgresql.org/download/macosx/</li>
+<li>选择 Postgres.app：https://postgresapp.com/</li>
 <li>选择指定版本下载，这里下载的是 PostgreSQL 11
-
 <ol>
 <li>下载后双击打开</li>
 <li>拖动到 Applications 文件夹</li>
 <li>安装成功</li>
-</ol></li>
+</ol>
+</li>
 <li>双击打开 Postgres 应用
-
 <ol>
 <li>点击 <code>Initialize</code> 即可开启 Postgres 服务</li>
-</ol></li>
+</ol>
+</li>
 <li>默认安装目录
-
 <ol>
 <li>/Applications/Postgres.app/Contents/Versions/latest/bin</li>
-</ol></li>
+</ol>
+</li>
 <li>默认数据文件目录
-
 <ol>
 <li>/Users/kail/Library/Application Support/Postgres/var-11</li>
-</ol></li>
+</ol>
+</li>
 <li>默认链接方式
-
 <ol>
 <li><code>localhost:5432</code></li>
 <li>Database<code>postgres</code></li>
 <li>User: <code>postgres</code></li>
 <li>Password <code>None</code></li>
 <li>Connection URL <code>postgresql://localhost</code></li>
-</ol></li>
 </ol>
-
+</li>
+</ol>
 <h2 id="卸载">卸载</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">删除 Postgres app
 
 <span style="color:#75715e"># 删除配置</span>
-$ rm -rf /Users/kail/Library/Application<span style="color:#ae81ff">\ </span>Support/Postgres</code></pre></div>
-<h2 id="read-more">Read More</h2>
-
+$ rm -rf /Users/kail/Library/Application<span style="color:#ae81ff">\ </span>Support/Postgres
+</code></pre></div><h2 id="read-more">Read More</h2>
 <ul>
 <li><a href="https://postgresapp.com/">https://postgresapp.com/</a>
-
 <ul>
-<li>Graphical Clients</li>
+<li>Graphical Clients
+<ul>
 <li><a href="https://www.pgadmin.org/">pgAdmin 4</a></li>
 <li>Postico</li>
-<li>How to connect</li>
+</ul>
+</li>
+<li>How to connect
+<ul>
 <li><a href="https://jdbc.postgresql.org/download.html">PostgreSQL JDBC driver</a></li>
 <li><a href="https://jdbc.postgresql.org/documentation/head/index.html">official PostgreSQL JDBC documentation</a></li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="debian-linux">Debian Linux</h2>
-
 <blockquote>
 <p>阮一峰 <a href="http://www.ruanyifeng.com/blog/2013/12/getting_started_with_postgresql.html">PostgreSQL新手入门</a></p>
 </blockquote>
@@ -184,8 +182,8 @@ $ rm -rf /Users/kail/Library/Application<span style="color:#ae81ff">\ </span>Sup
   
   <div>
     
-    <a href="https://github.com/hello-world-example/PostgreSQL/commit/cfcd53ba841aaad94ce2ecb1972eb4dcc1652b60" title='Last modified Feb 3, 2020 by kailbin' target="_blank" rel="noopener">
-      <img src="/PostgreSQL/svg/calendar.svg" alt="Changed" /> Feb 3, 2020
+    <a href="https://github.com/hello-world-example/PostgreSQL/commit/35e465cf4c6b5ce9d605d756f383735a8a05e08b" title='Last modified Feb 4, 2020 by kailbin' target="_blank" rel="noopener">
+      <img src="/PostgreSQL/svg/calendar.svg" alt="Changed" /> Feb 4, 2020
     </a>
   </div>
   
@@ -207,15 +205,12 @@ $ rm -rf /Users/kail/Library/Application<span style="color:#ae81ff">\ </span>Sup
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#mac-下安装-postgres">MAC 下安装 Postgres</a>
-<ul>
-<li><a href="#安装">安装</a></li>
-<li><a href="#卸载">卸载</a></li>
-<li><a href="#read-more">Read More</a></li>
-<li><a href="#debian-linux">Debian Linux</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#安装">安装</a></li>
+    <li><a href="#卸载">卸载</a></li>
+    <li><a href="#read-more">Read More</a></li>
+    <li><a href="#debian-linux">Debian Linux</a></li>
+  </ul>
 </nav>
   </aside>
 

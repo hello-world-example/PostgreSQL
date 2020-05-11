@@ -7,7 +7,7 @@
 <title>My S Q L.vs. Postgre S Q L | PostgreSQL</title>
 
 
-<link rel="stylesheet" href="/PostgreSQL/book.min.79de1f7861b0c98f453c0a93bebf3608a280809e417787746c373699639900d7.css">
+<link rel="stylesheet" href="/PostgreSQL/book.min.a2277534155c5e81ce2c8ca6a4cd295525f25c75788a2e4e72c3310491c743b1.css">
 
 
 
@@ -51,32 +51,32 @@ https://github.com/alex-shpak/hugo-book
 
 <ul>
 <li><strong>Basic</strong>
-
 <ul>
 <li><a href="/PostgreSQL/docs/Basic/Install-By-Docker/">通过 Docker 安装</a></li>
 <li><a href="/PostgreSQL/docs/Basic/Install-In-MAC/">MAC 下安装 Postgres</a></li>
 <li><a href="/PostgreSQL/docs/Basic/MySQL.vs.PostgreSQL/">MySQL vs PostgreSQL</a></li>
 <li><a href="/PostgreSQL/docs/Basic/JDBC/">JDBC</a></li>
-</ul></li>
+</ul>
+</li>
 <li><strong>Tutorial</strong>
-
 <ul>
 <li><a href="/PostgreSQL/docs/Tutorial/DDL/">DDL 数据定义</a></li>
 <li><a href="/PostgreSQL/docs/Tutorial/DataType/">数据类型</a></li>
 <li><a href="/PostgreSQL/docs/Tutorial/Catalogs/">系统表</a></li>
 <li><a href="/PostgreSQL/docs/Tutorial/Params/">常见参数</a></li>
-</ul></li>
+</ul>
+</li>
 <li><strong>Action</strong>
-
 <ul>
 <li><a href="/PostgreSQL/docs/Action/Sequence/">自增主键</a></li>
 <li>_MODIFY_TIME 自动更新</li>
-</ul></li>
+</ul>
+</li>
 <li><strong>Tools</strong>
-
 <ul>
 <li><a href="/PostgreSQL/docs/Tools/rds_dbsync/">rds_dbsync</a></li>
-</ul></li>
+</ul>
+</li>
 </ul>
 
 
@@ -109,10 +109,7 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown">
-
-<h1 id="mysql-vs-postgresql">MySQL vs PostgreSQL</h1>
-
+<article class="markdown"><h1 id="mysql-vs-postgresql">MySQL vs PostgreSQL</h1>
 <table>
 <thead>
 <tr>
@@ -121,32 +118,27 @@ https://github.com/alex-shpak/hugo-book
 <th>PostgreSQL</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td></td>
 <td>号称最流行</td>
 <td>号称最先进</td>
 </tr>
-
 <tr>
 <td></td>
 <td><code>text</code> 字段有不同的限制</td>
 <td><code>text</code> 能支持各种大小</td>
 </tr>
-
 <tr>
 <td></td>
 <td>单表自增</td>
 <td>多个表从同一个序列中取 ID</td>
 </tr>
-
 <tr>
 <td></td>
 <td>可以用多级从库</td>
 <td>9.2之前，不能用从库带从库</td>
 </tr>
-
 <tr>
 <td></td>
 <td></td>
@@ -154,11 +146,9 @@ https://github.com/alex-shpak/hugo-book
 </tr>
 </tbody>
 </table>
-
 <h2 id="postgresql-高级特性">PostgreSQL 高级特性</h2>
-
 <ul>
-<li>可以在  <code>array</code> 和<code>json</code> 上建索引，甚至还能用表达式索引</li>
+<li>可以在  <code>array</code> 和<code> json</code> 上建索引，甚至还能用表达式索引</li>
 <li><strong>NoSQL</strong>：JSON，JSONB，XML，HStore原生支持，至NoSQL数据库的外部数据包装器。</li>
 <li>支持服务器端脚本</li>
 <li>地理信息处理(<code>GIS</code>)</li>
@@ -171,9 +161,7 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>搜索索引</strong>：全文搜索索引足以应对简单场景；丰富的索引类型，支持函数索引，条件索引</li>
 <li><strong>时序数据</strong>：timescaledb时序数据库插件，分区表，BRIN索引</li>
 </ul>
-
 <h2 id="read-more">Read More</h2>
-
 <ul>
 <li><a href="https://www.oschina.net/translate/showdown-mysql-8-vs-postgresql-10">“王者对战”之 MySQL 8 vs PostgreSQL 10</a></li>
 <li><a href="http://mysql.taobao.org/monthly/2017/06/07/">MySQL · 源码分析 · InnoDB Repeatable Read隔离级别之大不同</a></li>
@@ -209,13 +197,10 @@ https://github.com/alex-shpak/hugo-book
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#mysql-vs-postgresql">MySQL vs PostgreSQL</a>
-<ul>
-<li><a href="#postgresql-高级特性">PostgreSQL 高级特性</a></li>
-<li><a href="#read-more">Read More</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#postgresql-高级特性">PostgreSQL 高级特性</a></li>
+    <li><a href="#read-more">Read More</a></li>
+  </ul>
 </nav>
   </aside>
 
